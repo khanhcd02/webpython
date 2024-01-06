@@ -1,0 +1,343 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+header{
+    position: absolute;
+    margin-top: 50px;
+    margin-left:40px;
+    width: 50%;
+    height: 70px;
+    padding: 20px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 200000000;
+}
+header .logo{
+    position: relative;
+    color: black;
+    letter-spacing: 3px;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 22px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    transition: all 1s;
+    animation: slideleft 2s ease-in-out forwards;
+}
+header .logo:hover{
+    color: red;
+    text-shadow: 0 0 20px red;
+}
+header .toggle{
+    position: relative;
+    width: 28px;
+    height: 40px;
+    right: 0;
+    cursor: pointer;
+    padding: 20px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000000000;
+    animation: navigation 2.3s ease-in-out forwards;
+}
+header .toggle span{
+    position: absolute;
+    display: block;
+    width: 28px;
+    height: 4px;
+    background: black;
+    border-radius: 2px;
+    transition: 0.5s;
+}
+header .toggle span::before{
+    position: absolute;
+    content: '';
+    width: 28px;
+    height: 4px;
+    background: black;
+    transform: translateY(-8px);
+    border-radius: 2px;
+    transition: 0.5s;
+    z-index: 10000;
+}
+header .toggle span::after{
+    position: absolute;
+    content: '';
+    width: 28px;
+    height: 4px;
+    background: black;
+    transform: translateY(8px);
+    border-radius: 2px;
+    transition: 0.5s;
+    z-index: 10000;
+}
+header .toggle span.active::after{
+    transform: rotateZ(45deg);
+}
+header .toggle span.active::before{
+    transform: rotateZ(-45deg);
+}
+header .toggle span.active{
+    background: transparent;
+}
+.navigation{
+    position: absolute;
+    display: flex;
+    right: 180px;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.5s;
+    z-index: 2;
+}
+.navigation li{
+    list-style: none;
+    padding: 0 10px;
+}
+.navigation li a{
+    color: black;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    opacity: 0;
+    padding: 10px 15px;
+    border-radius: 10px;
+    /* visibility: hidden; */
+    display: inline-block;
+    animation: navigation1 1s ease-in-out forwards;
+    transition: 0.5s;
+    /* transition: 0.5s;
+    transition: calc(0.5s * var(--i));
+    transform: translateX(150px); */
+}
+.navigation li a:hover, .navigation li .active{
+    background: #333;
+    color: #fff;
+}
+.navigation.active{
+    opacity: 1;
+    visibility: visible;
+}
+.navigation.active li a{
+    animation: navigation 1s ease-in-out forwards;
+    animation-delay: calc(0.1s * var(--i));
+    /* transform: translateX(0px);
+    opacity: 1;
+    visibility: visible; */
+}
+@keyframes navigation{
+    0%{
+        opacity: 0;
+        transform: translateX(150px);
+    }
+    100%{
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+@keyframes navigation1{
+    0%{
+        transform: translateX(0px);
+        opacity: 1;
+    }
+    100%{
+        transform: translateX(150px);
+        opacity: 0;
+    }
+}
+@keyframes slideleft{
+    0%{
+        opacity: 0;
+        transform: translateX(-150px);
+    }
+    100%{
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+.container{
+    position: absolute;
+    margin-top: 70px;
+    display: flex;
+    height: calc(100% - 150px);
+    width: calc(100% - 130px);
+    margin-left: 70px;
+}
+.container .box{
+    position: relative;
+    width: 25%;
+    height: 100%;
+    overflow: hidden;
+    border-right: 10px solid white;
+}
+.container .box .boxImg{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: 0.5s;
+}
+.container .box .boxImg img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    cursor: pointer;
+    opacity: 0;
+    animation: boximg 1.5s ease-in-out forwards;
+    animation-delay: calc(0.3s * var(--i));
+}
+@keyframes boximg{
+    0%{
+        opacity: 0;
+        transform: translateX(150px);
+    }
+    100%{
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+.container .box .boxImg.active{
+    position: fixed;
+    top: 70px;
+    left: 70px;
+    width: calc(100% - 140px);
+    height: calc(100% - 125px);
+    z-index: 10000;
+    cursor: pointer;
+}
+.container .box .boxImg img.active{
+    cursor: pointer;
+}
+footer{
+    position: absolute;
+    width: 100%;
+    height: auto;
+    left: 70px;
+    bottom: 45px;
+    display: flex;
+    z-index: 1;
+}
+footer ul{
+    position: absolute;
+    display: flex;
+}
+footer ul li{
+    list-style: none;
+    margin-right: 15px;
+    opacity: 0;
+    animation: slideleft 2s ease-in-out forwards;
+    animation-delay: calc(0.2s * var(--i));
+}
+.content li a:hover{
+    background: #333;
+    color: #fff;
+}
+footer ul li a{
+    text-decoration: none;
+    color: #333;
+    font-size: 20px;
+    padding: 10px 15px;
+    border-radius: 20px;
+    transition: 0.5s;
+    font-weight: 600;
+}
+footer .user{
+    position: absolute;
+    right: 140px;
+    cursor: pointer;
+    transition: all 0.5s;
+    opacity: 0;
+    animation: navigation 2s ease-in-out forwards;
+    animation-delay: 2s;
+}
+footer .user i{
+    font-size: 25px;
+    margin-right: 10px;
+}
+footer .user:hover{
+    color: rgb(0, 123, 255);
+    text-shadow: 0 0 20px rgba(0, 123, 255, 0.5),
+    0 0 40px rgb(0, 123, 255, 0.5);
+}
+footer .user span{
+    font-size: 25px;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+@media (max-width: 768px)
+{
+    .navigation{
+        position: fixed;
+        top: 20px;
+        left: 0;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        height: 100%;
+        background: #fff;
+        z-index: 100;
+    }
+    .navigation li{
+        padding: 10px 0px;
+    }
+    .container{
+        flex-direction: column;
+        flex-wrap: wrap;
+        margin-top: 60px;
+    }
+    .container .box{
+        width: 100%;
+        height: 25%;
+    }
+    .container .box .boxImg.active{
+        position: fixed;
+        top: 70px;
+        left: 70px;
+        margin-top: -10px;
+        width: calc(100% - 140px);
+        height: calc(100% - 125px);
+        z-index: 10000;
+        cursor: pointer;
+    }
+    footer{
+        width: 100%;
+        left: 70px;
+        bottom: 50px;
+    }
+    footer .content{
+        top: 50%;
+        left: 50%;
+        transform: translate(-75%, -50%);
+    }
+    footer ul li a{
+        font-size: 13px;
+        padding: 5px 10px;
+    }
+    footer .user{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        left: 0;
+        top: 20px;
+        position: absolute;
+    }
+    footer .user i{
+        font-size: 13px;
+        margin-right: 10px;
+    }
+    footer .user span{
+        font-size: 13px
+    }
+}

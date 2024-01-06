@@ -1,0 +1,44 @@
+{% extends "admin/layout.html" %}
+
+{% block content %}
+<h2>Thông tin người dùng</h2>
+
+<p>
+    <a class="btn btn-danger" href="/admin/users">Danh Sách người dùng</a>
+</p>
+
+<form method="POST" action="/admin/users/{{ user.ID }}" enctype="multipart/form-data">
+    <div class="form-group">
+        <label for="name">Tên người dùng</label>
+        <input type="text" name="name" class="form-control" id="name" value="{{ user.Hoten }}">
+    </div>
+    <div class="form-group">
+        <label for="tk">Tài khoản</label>
+        <input type="text" name="tk" class="form-control" id="tk" value="{{ user.TK }}">
+    </div>
+    <div class="form-group">
+        <label for="mk">Mật khẩu</label>
+        <input type="text" name="mk" class="form-control" id="mk" value="{{ user.MK }}">
+    </div>
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="text" name="email" class="form-control" id="email" value="{{ user.Email }}">
+    </div>
+    <div class="form-group">
+        <label for="sdt">SDT</label>
+        <input type="text" name="sdt" class="form-control" id="sdt" value="{{ user.SDT }}">
+    </div>
+    <div class="form-group">
+        <label for="dc">Địa chỉ</label>
+        <input type="text" name="dc" class="form-control" id="dc" value="{{ user.Diachi }}">
+    </div>
+    <div class="form-group">
+        <select name="pq" class="form-control">
+            <option value="0" {% if user.PQ == 0 %} selected {% endif %}>Khách</option>
+            <option value="1" {% if user.PQ == 1 %} selected {% endif %}>Admin</option>
+            <option value="2" {% if user.PQ == 2 %} selected {% endif %}>Khoá</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-success">Lưu Thay đổi</button>
+</form>
+{% endblock %}

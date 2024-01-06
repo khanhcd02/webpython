@@ -1,0 +1,38 @@
+{% extends "admin/layout.html" %}
+
+{% block content %}
+<h2>Cập nhật sản phẩm</h2>
+
+<p>
+    <a class="btn btn-danger" href="/admin/products">Danh Sách Sản Phẩm</a>
+</p>
+
+<form method="POST" action="/admin/products/editproduct/{{ product.ID }}" enctype="multipart/form-data">
+    <div class="form-group">
+        <label for="name">Tên sản phẩm</label>
+        <input type="text" name="name" class="form-control" id="name" value="{{ product.Tensp }}">
+    </div>
+    <div class="form-group">
+        <label for="price">Giá bán (VNĐ)</label>
+        <input type="number" name="price" class="form-control" id="price" value="{{ product.Gia }}">
+    </div>
+    <div class="form-group">
+        <label for="description">Mô tả</label>
+        <textarea name="description" class="form-control" id="description">{{ product.Mota }}</textarea>
+    </div>
+    <div class="form-group">
+        <img src="{{ url_for('serve_image', filename=product.Img) }}" alt="">
+        <input type="hidden" name="x" value="{{ product.Img }}">
+        <input type="file" name="img" class="form-control-file" id="img">
+    </div>
+    <div class="form-group">
+        <label for="loaisp">Hãng sản xuất</label>
+        <select id="loaisp" name="loaisp" class="form-control">
+            {% for brand in brands %}
+                <option value="{{ brand.ID }}" {% if product.Loaisp == brand.ID %} selected {% endif %}>{{ brand.hangsx }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <button type="submit" class="btn btn-success">Lưu sản phẩm</button>
+</form>
+{% endblock %}

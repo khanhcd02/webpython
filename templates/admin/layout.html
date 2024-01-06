@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>{{ title }}</title>
+    <link rel="icon" href="/static/img/logo1.jpg" type="image/jpg">
+    <link href="/static/css/PagedList.css" rel="stylesheet" />
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/static/css/bootstrap.css" rel="stylesheet" />
+    <link href="/static/css/sty1e.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
+    <style type="text/css">
+        .menu1 {
+            color: white;
+            padding-left: 20px;
+        }
+    </style>
+</head>
+<body class="sb-nav-fixed">
+    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-success">
+        <h3 style="margin-left:700px"><a href="/admin" class = "menu1">ADMIN PAGE</a></h3>
+        <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#">
+        </button>
+        <!-- Navbar Search-->
+
+
+
+    </nav>
+    <div id="layoutSidenav">
+        <div id="layoutSidenav_nav">
+            <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                <div class="sb-sidenav-menu">
+                    <div class="nav">
+                        <div class="sb-sidenav-menu-heading" style="color:white"> <h5>Quản lý</h5></div>
+                        <div style="padding-left:20px">
+                            <a href="/admin/products">
+                                <span class="menu-text">  Sản Phẩm  </span>
+                            </a>
+                        </div>
+                        <br />
+                        <div style="padding-left:20px">
+                            <a href="#">
+                                <span class="menu-text"> Tin Tức </span>
+                            </a>
+                        </div>
+                        <br />
+                        <div style="padding-left:20px">
+                            <a href="#">
+                                <span class="menu-text"> Liên Hệ </span>
+                            </a>
+                        </div>
+                        <br />
+                        <div style="padding-left:20px">
+                            <a href="/admin/users">
+                                <span class="menu-text"> Người dùng   </span>
+                            </a>
+                        </div>
+                        <br />
+                        <div style="padding-left:20px">
+                            <a href="/admin/chat">
+                                <span class="menu-text"> Chat   </span>
+                            </a>
+                        </div>
+                        <br />
+                        <div style="padding-left:20px">
+                            <a href="/admin/orders">
+                                <span class="menu-text"> Đơn Hàng   </span>
+                            </a>
+                        </div>
+                        <br />
+                        <div style="padding-left:20px">
+                            <a href="/">
+                                <span class="menu-text"> Trang website   </span>
+                            </a>
+                        </div>
+                        <br />
+                        <div style="padding-left:20px;margin-top:160px">
+                            <a href="/logout">
+                                <span class="menu-text"> Đăng xuất    </span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="sb-sidenav-footer">
+                    <div class="small">Login with :</div>
+                    <a style="color: brown ;text-decoration: none; color: inherit; font-size: 3vmin;" href="#">{{session['name']}}</a>
+                </div>
+            </nav>
+        </div>
+        <div id="layoutSidenav_content">
+            <div class="container-fluid">
+                <main>
+                    {% block content %}{% endblock %}
+                </main>
+            </div>
+            
+            <footer class="py-4 bg-light mt-auto">
+                <div class="container-fluid">
+                    <div class="d-flex align-items-center justify-content-between small">
+                        <div class="text-muted">Copyright &copy; Phạm Khánh 2002</div>
+                        <div>
+                            <a href="#">WEBSITE LAPTOP</a>
+                            &middot;
+                            <a href="#">EPU &amp; NGUYỄN ĐỨC ANH and PHẠM ĐĂNG KHÁNH</a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+</body>
+</html>

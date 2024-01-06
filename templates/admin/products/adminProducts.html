@@ -1,0 +1,51 @@
+{% extends "admin/layout.html" %}
+
+{% block content %}
+    <div>
+        <h2>Quản lý sản phẩm</h2>
+        <form action="/TrangSanPham/Search" method="get">
+            <div style="margin-left:200px">
+                <input name="searchQuery" class="form-control" type="text" placeholder="Tìm kiếm..." aria-label="Search" aria-describedby="basic-addon2" />
+                <div class="input-group-append">
+                    <button class="btn btn-primary" type="submit"><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <p>
+        <a class="btn btn-danger" href="{{ url_for('add_product') }}">Thêm Sản Phẩm</a>
+    </p>
+    <table class="table table-bordered" id="tableSP">
+        <tr>
+            <th>Tên sản phẩm</th>
+            <th style="width:200px">Hình ảnh</th>
+            <th>Giá (VNĐ)</th>
+            <th>Mô tả</th>
+            <th>Hãng sản xuất</th>
+            <th>Hành động</th>
+        </tr>
+        <!-- Vòng lặp Python để hiển thị dữ liệu -->
+        {% for item in products %}
+        <tr>
+            <td>{{ item.Tensp }}</td>
+            <td>
+                <img src="/static/img/products/{{ item.Img }}" style="height:80px;" />
+            </td>
+            <td>{{ '{:,.0f}'.format(item.Gia) }}</td>
+            <td>{{ item.Mota }}</td>
+            <td>{{ item.hangsx }}</td>
+            <td>
+                <a style="height:40px;width:70px" class="btn btn-xs btn-info " href="/admin/products/editproduct/{{ item.ID }}">
+                    SỬA
+                </a>
+                <br />
+                <br />
+                <form method="POST" action="{{ url_for('delete_product', product_id=item.ID) }}">
+                    <button style="height:40px;width:70px" type="submit" class="btn btn-xs btn-danger">XÓA</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
+

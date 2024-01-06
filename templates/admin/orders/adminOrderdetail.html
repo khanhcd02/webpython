@@ -1,0 +1,51 @@
+{% extends "admin/layout.html" %}
+
+{% block content %}
+<style>
+    h1 {
+        color: #333;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    table, th, td {
+        border: 1px solid #333;
+    }
+
+    th, td {
+        padding: 10px;
+        text-align: left;
+    }
+</style>
+<h1>Chi tiết đơn hàng</h1>
+<h3>Mã đơn hàng: {{ order[0].orderID }}</h3>
+    <table>
+        <tr>
+            <th>Mã sản phẩm</th>
+            <th>Số lượng</th>
+            <th>Giá</th>
+        </tr>
+        {% for item in order %}
+        <tr>
+            <td>{{ item.masp }}</td>
+            <td>{{ item.sl }}</td>
+            <td>{{ item.gia }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <br>
+    <h5>Trạng thái đơn hàng:</h5>
+    <form style="text-align: center;" action="" method="post">
+        <div class="form-group">
+            <select name="tt" class="form-control">
+                <option value="0" {% if order[0].trangthai == 0 %} selected {% endif %}>Đã đặt</option>
+                <option value="1" {% if order[0].trangthai == 1 %} selected {% endif %}>Đã hoàn thành</option>
+                <option value="2" {% if order[0].trangthai == 2 %} selected {% endif %}>Huỷ đơn</option>
+            </select>
+        </div>
+        <input type="submit" class="btn btn-success" value="Cập nhật đơn hàng">
+    </form>
+{% endblock %}

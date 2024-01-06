@@ -1,0 +1,37 @@
+{% extends "admin/layout.html" %}
+
+{% block content %}
+<h2>Thêm sản phẩm</h2>
+
+<p>
+    <a class="btn btn-danger" href="/admin/products">Danh Sách Sản Phẩm</a>
+</p>
+
+<form method="POST" action="/admin/products/addproduct" enctype="multipart/form-data">
+    <div class="form-group">
+        <label for="name">Tên sản phẩm</label>
+        <input type="text" name="name" class="form-control" id="name">
+    </div>
+    <div class="form-group">
+        <label for="price">Giá bán (VNĐ)</label>
+        <input type="number" name="price" class="form-control" id="price">
+    </div>
+    <div class="form-group">
+        <label for="description">Mô tả</label>
+        <textarea name="description" class="form-control" id="description"></textarea>
+    </div>
+    <div class="form-group">
+        <label for="img">Hình ảnh</label>
+        <input type="file" name="img" class="form-control-file" id="img">
+    </div>
+    <div class="form-group">
+        <label for="loaisp">Hãng sản xuất</label>
+        <select id="loaisp" name="loaisp" class="form-control">
+            {% for brand in brands %}
+                <option value="{{ brand.ID }}">{{ brand.hangsx }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <button type="submit" class="btn btn-success">Thêm sản phẩm</button>
+</form>
+{% endblock %}

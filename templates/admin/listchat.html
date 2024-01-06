@@ -1,0 +1,10 @@
+{% extends "admin/layout.html" %}
+
+{% block content %}
+<h1>User List</h1>
+    <ul>
+        {% for user, room in user_rooms.items() %}
+            <li><a href="{{ url_for('admin_chat', username=user) }}">{{ user }}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}

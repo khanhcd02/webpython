@@ -1,0 +1,38 @@
+﻿body {
+}
+.formdh {
+    width: 1080px;
+}
+.input {
+    text-align: left;
+}
+.cnh{
+    width:520px;
+    height:100px;
+}
+.lb {
+}
+.dh {
+    margin: 20px auto;
+    border-radius: 6px;
+    text-align: center;
+    font-size: 18px;
+    color: #ffffff;
+    background-color: #ff6a00;
+    height: 30px;
+    width: 80px;
+    margin-left: 490px;
+}
+.container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.box {
+    width: 27%;
+    height: 70px;
+}
+.sp {
+    color: red;
+    font-style: italic;
+}

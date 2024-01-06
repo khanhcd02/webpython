@@ -1,0 +1,43 @@
+{% extends "admin/layout.html" %}
+
+{% block content %}
+<h2>Thêm người dùng</h2>
+
+<p>
+    <a class="btn btn-danger" href="/admin/users">Danh Sách người dùng</a>
+</p>
+
+<form method="POST" action="/admin/users/adduser" enctype="multipart/form-data">
+    <div class="form-group">
+        <label for="name">Tên người dùng</label>
+        <input type="text" name="name" class="form-control" id="name">
+    </div>
+    <div class="form-group">
+        <label for="tk">Tài khoản</label>
+        <input type="text" name="tk" class="form-control" id="tk" >
+    </div>
+    <div class="form-group">
+        <label for="mk">Mật khẩu</label>
+        <input type="text" name="mk" class="form-control" id="mk">
+    </div>
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="text" name="email" class="form-control" id="email">
+    </div>
+    <div class="form-group">
+        <label for="sdt">SDT</label>
+        <input type="text" name="sdt" class="form-control" id="sdt" >
+    </div>
+    <div class="form-group">
+        <label for="dc">Địa chỉ</label>
+        <input type="text" name="dc" class="form-control" id="dc" >
+    </div>
+    <div class="form-group">
+        <select name="pq" class="form-control">
+            <option value="0">Khách</option>
+            <option value="1">Admin</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-success">Thêm người dùng</button>
+</form>
+{% endblock %}

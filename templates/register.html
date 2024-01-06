@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Đăng ký</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="static/csshomeadmin/assets/css.css" rel="stylesheet" />
+    <link href="static/csshomeadmin/assets/css/stylee.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" href="~/Theme/images/logo1.jpg" type="image/jpg">
+    <link href="static/cssloginadmin/login.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="login">
+        <h2 id="txt">Đăng ký</h2>
+    <form class="login" method="POST" action="/register">
+        <div class="inputBox">
+            <label for="name">Họ tên:</label>
+            <input type="text" id="name" name="name" placeholder="Tên người dùng" required>
+        </div>
+        <div class="inputBox">
+            <label for="tk">Tên đăng nhập:</label>
+            <input type="text" id="tk" name="tk" placeholder="Tên Đăng Nhập" required>
+        </div>
+        <div class="inputBox">
+            <label for="mk">Mật khẩu:</label>
+            <input type="password" id="mk" name="mk" placeholder="Mật khẩu" required>
+        </div>
+        <div class="inputBox">
+            <label for="email">Email</label>
+            <input type="text" name="email" id="email" placeholder="Email" required>
+        </div>
+        <div class="inputBox">
+            <label for="sdt">SDT</label>
+            <input type="text" name="sdt" id="sdt" placeholder="Số điện thoại" required>
+        </div>
+        <div class="inputBox">
+            <label for="dc">Địa chỉ</label>
+            <input type="text" name="dc" id="dc" placeholder="Địa chỉ" required>
+        </div>
+        <p style="color: red;">{{ban}}</p>
+        <div class="inputButton">
+            <input id="btn" type="submit" value="Đăng ký">
+        </div>
+        <a style="margin-right:200px;width:150px;" href="/">Quay lại trang chủ</a>
+    </form>
+
+    </div>
+    <div class="colors">
+        <span onclick="clickColors('#33FFCC')" style="--clr:#33FFCC;"></span>
+        <span onclick="clickColors('#99CCFF')" style="--clr:#99CCFF;"></span>
+        <span onclick="clickColors('#F29388')" style="--clr:#F29388;"></span>
+        <span onclick="clickColors('#F7E0BA')" style="--clr:#F7E0BA;"></span>
+    </div>
+</body>
+<script>
+    var btn = document.getElementById('btn')
+    var inp1 = document.getElementById('inp1')
+    var inp2 = document.getElementById('inp2')
+    function clickColors(color) {
+        document.body.style.background = color;
+        btn.style.background = color;
+        inp1.style.borderColor = color;
+        inp2.style.borderColor = color;
+
+        document.querySelectorAll('span').forEach(function
+            (item) {
+            item.classList.remove('active');
+        })
+        event.target.classList.add('active');
+    }
+</script>
+
+</html>

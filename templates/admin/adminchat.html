@@ -1,0 +1,36 @@
+{% extends "admin/layout.html" %}
+
+{% block content %}
+    <h1>Chat with {{ username }}</h1>
+    <ul id="messages"></ul>
+    <form id="form" action="">
+        <input id="input" autocomplete="off" /><button>Send</button>
+    </form>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+    <script>
+        var socket = io.connect('http://' + document.domain + ':' + location.port);
+
+        var username = "{{ username }}";
+
+        // Emit a 'join' event with the username
+        socket.emit('join', {'username': username});
+
+        // Event listener for incoming messages
+        socket.on('message', function(data) {
+            var ul = document.getElementById('messages');
+            var li = document.createElement('li');
+            li.appendChild(document.createTextNode(`${data.sender}: ${data.message}`));
+            ul.appendChild(li);
+        });
+
+        // Event listener for form submission
+        document.getElementById('form').onsubmit = function() {
+            var input = document.getElementById('input');
+            // Emit a 'message' event with the sender, receiver, and message
+            socket.emit('message', {'sender': 'Admin', 'receiver': username, 'message': input.value});
+            input.value = '';
+            return false;
+        };
+    </script>
+{% endblock %}

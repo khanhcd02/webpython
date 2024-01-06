@@ -1,0 +1,90 @@
+{% include 'header.html' %}
+<div class="products">
+    <div class="content">
+        <div class="row">
+            {% for product in products %}
+            <div class="product">
+                <div class="product-item">            
+                    <div class="image">
+                        <img style="height: 170px" src="{{ url_for('serve_image', filename=product.Img) }}" alt="">
+                    </div>
+                    <div class="product-title">
+                        <h3 style="margin-top:-10px">{{product.Tensp}}</h3>
+                        <p>{{ '{:,.0f}'.format(product.Gia) }} VNĐ</p>
+                        <form method="POST" action="/add_to_cart">
+                            <input type="hidden" name="product_id" value="{{product.ID}}">
+                            <input type="hidden" name="product_name" value="{{product.Tensp}}">
+                            <input type="hidden" name="product_img" value="{{product.Img}}">
+                            <input type="hidden" name="price" value="{{product.Gia}}">
+                            <input type="number" name="quantity" value="1" min="1">
+                            <input onclick="tb()" class="product_add_cart" type="submit" value="Thêm vào giỏ hàng">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+</div>
+{% include 'footer.html' %}
+<script>
+    function tb(){
+        alert("Đã thêm vào giỏ hàng!")
+    }
+</script>
+<style>
+    .products {
+    padding: 20px;
+}
+
+.content {
+    max-width: 1200px;
+    margin: auto;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #f5f5f5;
+    justify-content: center;
+}
+
+.product {
+    flex: 0 0 calc(30% - 20px); /* 3 sản phẩm trên mỗi hàng (có khoảng cách giữa chúng) */
+    margin: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 20px;
+    text-align: center;
+}
+
+.product .image img {
+    height: 170px;
+}
+
+.product-title h3 {
+    margin-top: -10px;
+    margin: auto;
+}
+
+.product-title p {
+    font-weight: bold;
+    color: #333;
+}
+
+.product_add_cart {
+    background-color: #333;
+    color: #fff;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 5px;
+    align-items: center;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+}
+.product_add_cart:hover {
+    background-color: #d83535;
+}
+</style>

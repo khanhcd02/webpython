@@ -1,0 +1,76 @@
+{% include 'header.html' %}
+<style>
+    .delete-button {
+  background-color: #ff5733; /* Màu nền của nút */
+  color: #fff; /* Màu chữ trên nút */
+  border: none; /* Bỏ viền */
+  border-radius: 50%; /* Làm cho nút tròn */
+  width: 30px; /* Độ rộng của nút */
+  height: 30px; /* Độ cao của nút */
+  font-size: 20px; /* Cỡ chữ */
+  cursor: pointer; /* Biến đổi con trỏ thành bàn tay khi di chuột vào nút */
+}
+
+.delete-button:hover {
+  background-color: #ff0000; /* Màu nền khi di chuột vào nút */
+}
+
+</style>
+<div style="width: 65%;margin: auto;">
+    <h2>GIỎ HÀNG</h2>
+    <hr />
+    <br />
+    <table class="table">
+        <thead>
+            <tr style="color: #0026ff">
+                <th>Sản phẩm</th>
+                <th></th>
+                <th>Giá</th>
+                <th>Số lượng</th>
+                <th>Tổng Giá</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in cart %}
+                {% set total = item.price * item._shopping_quantity %}
+                <tr>
+                    <td>
+                        {{ item.name }}
+                    </td>
+                    <td>
+                        <img src="/img/products/{{ item.img }}" style="width: 100px; height: 100px" />
+                    </td>
+                    <td>
+                        {{ '{:,.0f}'.format(item.price) }} VNĐ
+                    </td>
+                    <td>
+                        {{ item._shopping_quantity }}
+                    </td>
+                    <td>
+                        <b style="text-decoration: none; color: #000000; font-size: 15px; padding-left: 20px">{{ '{:,.0f}'.format(total) }} VNĐ</b>
+                    </td>
+                    <td>
+                        <form method="POST" action="/remove_from_cart">
+                            <input type="hidden" name="product_id" value="{{ item.id }}">
+                            <button class="delete-button" type="submit">X</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <hr />
+    <b style="font-size: 15px; text-align: right">Tổng tiền phải trả :</b>
+    <b colspan="S" style="float: right; text-align: left; font-size: 15px; color: #ff0000;">{{ '{:,.0f}'.format(total_money) }} VNĐ</b>
+    <hr />
+    <br />
+    <br />
+    <div style="display: flex; justify-content: center; align-items: center;">
+        <a name="button" value="OK" type="button" style="line-height: 35px; height: 35px; text-decoration: none; border-radius: 6px; text-align: center; font-size: 21px; color: #ffffff; background-color: #ff6a00;"
+            href="/checkout">
+            <i style="margin-left: 5px" class="fa fa-shopping-bag" aria-hidden="true"></i> ĐẶT HÀNG
+        </a>
+    </div>
+</div>
+{% include 'footer.html' %}
